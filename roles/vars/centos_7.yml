@@ -1,0 +1,43 @@
+---
+# vars file for install Asterisk
+packages_required:
+    - "@Development tools"
+    - wget
+    - lynx
+    - tftp-server
+    - unixODBC
+    - mysql-connector-odbc
+    - mariadb-server
+    - mariadb
+    - httpd
+    - ncurses-devel
+    - sendmail
+    - sendmail-cf
+    - sox
+    - newt-devel
+    - libxml2-devel
+    - libtiff-devel
+    - audiofile-devel
+    - gtk2-devel
+    - kernel-devel-3.10.0-1160.71.1.el7.x86_64
+    - cronie-anacron
+    - uuid-devel
+    - sqlite-devel
+    - gnutls-devel
+    - python-devel
+    - texinfo
+    - libuuid-devel
+    - libedit-devel
+    - git
+    - vim
+    - net-tools
+    - psmisc
+    - libtermcap-devel
+    - libtool
+    - subversion
+    - crontabs
+    - libedit
+    - python3
+    - mysql
+    - php
+    - php-mysql

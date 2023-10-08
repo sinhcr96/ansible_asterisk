@@ -1,0 +1,29 @@
+---
+# Install Dahdi
+
+- name: Download all sources Dahdi
+  unarchive:
+    src: "{{ DAHDI_PACKAGE }}"
+    dest: "{{ SOURCE_DIR }}"
+    remote_src: yes
+
+- name: get the name of Dahdi
+  find:
+    file_type: directory
+    paths: "{{ SOURCE_DIR }}"
+    pattern: "dahdi-linux-complete-*"
+  register: dahdi_folder
+
+- name: Install Dahdi
+  command: "{{ item }}"
+  args:
+    chdir: "{{ dahdi_folder.files[0].path }}"
+  with_items:
+    - make
+    - make install
+    - make config
+  register: output_dahdi
+
+- name: Debug
+  debug:
+    var: output_dahdi

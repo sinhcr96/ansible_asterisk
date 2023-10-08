@@ -1,0 +1,28 @@
+---
+# Install Libpri
+
+- name: Download all sources Libpri
+  unarchive:
+    src: "{{ LIBPRI_PACKAGE }}"
+    dest: "{{ SOURCE_DIR }}"
+    remote_src: yes
+
+- name: get the name of Libpri
+  find:
+    file_type: directory
+    paths: "{{ SOURCE_DIR }}"
+    pattern: "libpri-*"
+  register: libpri_folder
+
+- name: Install Libpri
+  command: "{{ item }}"
+  args:
+    chdir: "{{ libpri_folder.files[0].path }}"
+  with_items:
+    - make
+    - make install
+  register: output_libpri
+
+- name: Debug
+  debug:
+    var: output_libpri
